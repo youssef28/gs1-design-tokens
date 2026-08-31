@@ -30,8 +30,11 @@ for (const [theme, themeSetKey] of Object.entries(themeSetKeys)) {
       'Primitives/Value': tokens['Primitives/Value'],
       'Component/Value': tokens['Component/Value'],
       [themeSetKey]: tokens[themeSetKey],
+      // Typography/Arabic is intentionally excluded here: it shares the same
+      // keys as Typography/English (family, weight, size, right-to-left, ...)
+      // and these 6 themes are brand x mode only, not language-scoped, so
+      // including both would let one silently overwrite the other.
       'Typography/English': tokens['Typography/English'],
-      'Typography/Arabic': tokens['Typography/Arabic'],
     },
     preprocessors: ['tokens-studio'],
     platforms: {
